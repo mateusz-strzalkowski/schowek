@@ -54,3 +54,12 @@ SELECT * FROM posts, authors WHERE posts.author=authors.pk;
 SELECT * FROM posts INNER JOIN authors ON posts.author=authors.pk;
 
 SELECT * FROM post_tags JOIN tags ON post_tags.pk_tags=tags.pk;
+
+-- posty wg daty
+SELECT title, firstname, lastname, date,  intro, content FROM posts INNER JOIN authors ON posts.author=authors.pk ORDER BY date DESC;
+
+-- posty wedlug tagu
+SELECT title, firstname, lastname, date,  intro, content FROM post_tags AS pt 
+JOIN posts AS p ON pt.pk_posts = p.pk 
+    INNER JOIN authors ON p.author=authors.pk
+        JOIN tags AS t ON pk_tags = t.pk WHERE t.tag = 'englisc';
